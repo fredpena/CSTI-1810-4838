@@ -7,16 +7,15 @@
         android:layout_height="match_parent"
         tools:context=".FirstFragment">
 
-    <TextView
+    <EditText
             android:id="@+id/textview_first"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/hello_first_fragment"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/button_first"
-    />
+            android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:hint="Enter value..."/>
 
     <Button
             android:id="@+id/button_first"
