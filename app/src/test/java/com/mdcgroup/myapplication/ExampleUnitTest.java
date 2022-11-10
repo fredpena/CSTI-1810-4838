@@ -1,4 +1,4 @@
-package com.pucmm.myapp;
+package com.mdcgroup.myapplication;
 
 import org.junit.Test;
 

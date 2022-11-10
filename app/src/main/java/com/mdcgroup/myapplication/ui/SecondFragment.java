@@ -1,14 +1,23 @@
-package com.pucmm.myapp;
+package com.mdcgroup.myapplication.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
-import com.pucmm.myapp.databinding.FragmentSecondBinding;
+import com.mdcgroup.myapplication.R;
+import com.mdcgroup.myapplication.database.Word;
+import com.mdcgroup.myapplication.databinding.FragmentSecondBinding;
+import com.mdcgroup.myapplication.models.WordViewModel;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 public class SecondFragment extends Fragment {
 
@@ -28,11 +37,17 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+        WordViewModel mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+
+        binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                if (TextUtils.isEmpty(binding.value.getText())) {
+                } else {
+                    String word = binding.value.getText().toString();
+                    mWordViewModel.insert(new Word(word));
+                    binding.value.setText(null);
+                }
             }
         });
     }
