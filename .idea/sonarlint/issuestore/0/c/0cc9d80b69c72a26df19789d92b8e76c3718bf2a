@@ -1,0 +1,9 @@
+
+l
+java:S1450"VRemove the "binding" field and declare it as a local variable in the relevant methods.(¶ÃÊ
+d
+java:S1854&"BRemove this useless assignment to local variable "mWordViewModel".(›¡„Àúÿÿÿÿ8Å¥¿äÉ0
+U
+java:S1481&"3Remove this unused "mWordViewModel" local variable.(›¡„Àúÿÿÿÿ8È¥¿äÉ0
+]	java:S125("<This block of commented-out lines of code should be removed.(Ï¼¶©ıÿÿÿÿ8É¥¿äÉ0
+V	java:S1255"<This block of commented-out lines of code should be removed.(ùúäÃúÿÿÿÿ

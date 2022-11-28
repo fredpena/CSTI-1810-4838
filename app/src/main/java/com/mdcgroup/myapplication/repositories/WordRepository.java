@@ -2,15 +2,14 @@ package com.mdcgroup.myapplication.repositories;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
-import com.mdcgroup.myapplication.database.AppDatabase;
-import com.mdcgroup.myapplication.database.Word;
-import com.mdcgroup.myapplication.database.WordDao;
+import com.mdcgroup.myapplication.database.*;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class WordRepository {
     private WordDao wordDao;
-    private LiveData<List<Word>> mAllWords;
+    private LiveData<List<Product>> mAllWords;
 
 
     public WordRepository(Application application) {
@@ -19,19 +18,40 @@ public class WordRepository {
         mAllWords = wordDao.getAllWords();
     }
 
-    public void insert(Word word) {
+    public void insert(Product product) {
         AppDatabase.databaseWriteExecutor.execute(() ->
-                wordDao.insert(word));
+                wordDao.insert(product));
     }
 
-    public void deleteAll() {
+    public void insertCategory(Category category) {
+        AppDatabase.databaseWriteExecutor.execute(() ->
+                wordDao.insertCategory(category));
+    }
+
+    public void delete(Product product) {
+        AppDatabase.databaseWriteExecutor.execute(() ->
+                wordDao.delete(product));
+    }
+
+    public void deleteAll(Consumer<Void> consumer) {
         AppDatabase.databaseWriteExecutor.execute(() ->
                 wordDao.deleteAll());
+        consumer.accept(null);
     }
 
-    public LiveData<List<Word>> findAll() {
+    public void find(int category, Consumer<CategoryAndProduct> consumer) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            consumer.accept(wordDao.find(category));
+        });
+    }
+
+    public LiveData<List<Product>> findAll() {
         return mAllWords;
     }
 
 
+    public void update(Product product) {
+        AppDatabase.databaseWriteExecutor.execute(() ->
+                wordDao.update(product));
+    }
 }

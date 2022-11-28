@@ -1,23 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/cardView"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="10dp"
         android:minHeight="70dp"
-        app:cardElevation="1dp"
-        android:layout_margin="8dp">
+        app:cardElevation="3dp">
 
-    <TextView
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/word"
-            android:text="Word"
-            android:textColor="#8c8c8c"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            android:id="@+id/linear_layout">
 
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="ADD TO CART"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp" android:id="@+id/btnCart"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/price" android:textStyle="bold|italic"
+                    app:flow_horizontalAlign="start" app:flow_verticalAlign="baseline"
+                    android:textColor="@color/white" android:textSize="14sp"
+                    android:gravity="center_horizontal|center_vertical" android:linksClickable="false"
+                    android:elevation="2dp" android:background="@drawable/myrect"
+                    app:layout_constraintStart_toEndOf="@+id/price"/>
+            <ImageView
+                    android:background="@drawable/myrect2"
+                    android:layout_width="0dp"
+                    android:elevation="2dp"
+                    android:layout_height="180dp" tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/image"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"/>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/name"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintTop_toBottomOf="@+id/image" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" android:textStyle="bold|italic"/>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/brand"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/name"
+                    android:textStyle="italic" android:textColor="#000000"
+                    app:layout_constraintHorizontal_chainStyle="spread" android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/brand"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    android:textStyle="bold"
+                    android:inputType="numberDecimal" app:layout_constraintEnd_toStartOf="@+id/btnCart"
+                    android:layout_marginEnd="16dp"/>
+            <Button
+                    android:text="Edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnEdit"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/btnCart" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:backgroundTint="#009688"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -4,18 +4,20 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import com.mdcgroup.myapplication.database.AppDatabase;
-import com.mdcgroup.myapplication.database.Word;
+import com.mdcgroup.myapplication.database.Category;
+import com.mdcgroup.myapplication.database.CategoryAndProduct;
+import com.mdcgroup.myapplication.database.Product;
 import com.mdcgroup.myapplication.repositories.WordRepository;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class WordViewModel extends AndroidViewModel {
 
     private WordRepository mRepository;
 
-    private LiveData<List<Word>> mAllWords;
+    private LiveData<List<Product>> mAllWords;
 
     public WordViewModel(@NonNull @NotNull Application application) {
         super(application);
@@ -25,17 +27,32 @@ public class WordViewModel extends AndroidViewModel {
         mAllWords = mRepository.findAll();
     }
 
-    public void insert(Word word) {
-        mRepository.insert(word);
+    public void insert(Product product) {
+        mRepository.insert(product);
     }
 
-    public void deleteAll() {
-        mRepository.deleteAll();
+    public void find(int category, Consumer<CategoryAndProduct> consumer) {
+        mRepository.find(category, consumer);
     }
 
-    public LiveData<List<Word>> findAll() {
+    public void insertCategory(Category category) {
+        mRepository.insertCategory(category);
+    }
+
+    public void delete(Product product) {
+        mRepository.delete(product);
+    }
+
+    public void deleteAll(Consumer<Void> consumer) {
+        mRepository.deleteAll(consumer);
+    }
+
+    public LiveData<List<Product>> findAll() {
         return mAllWords;
     }
 
 
+    public void update(Product product) {
+        mRepository.update(product);
+    }
 }

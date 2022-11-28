@@ -1,18 +1,20 @@
 package com.mdcgroup.myapplication.ui;
 
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.mdcgroup.myapplication.R;
-import com.mdcgroup.myapplication.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import com.mdcgroup.myapplication.database.Category;
+import com.mdcgroup.myapplication.database.Product;
+import com.mdcgroup.myapplication.databinding.ActivityMainBinding;
+import com.mdcgroup.myapplication.models.WordViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +33,22 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+
+        WordViewModel mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+
+//        mWordViewModel.insertCategory(new Category("Tecnologia"));
+//        mWordViewModel.insertCategory(new Category("Ropa"));
+//
+////        mWordViewModel.deleteAll(unused -> {
+////        });
+//        mWordViewModel.insert(new Product("T-Shirt, Style G2000, Multipack", "Gildan", 107.87, 1));
+//        mWordViewModel.insert(new Product("New Freedom Flag T-Shirt", "Under Armour", 43.87, 2));
+//        mWordViewModel.insert(new Product("Dri-Power Long Sleeve T-Shirt", "Jerzees", 9.99, 1));
+//        mWordViewModel.insert(new Product("Crew Neck Soft Fitted Tees S - 4XL Fresh Classic Tshirts", "INTO THE AM", 21.95, 2));
+//        mWordViewModel.insert(new Product("Casual Slim Fit Basic Tops Knitted Thermal Turtleneck Pullover Sweater", "Poriff", 20.99, 1));
+//        mWordViewModel.insert(new Product("Classic Cotton Tee, Crewneck Tee, Men's Mid-Weight T-Shirt, Script Logo", "Champion", 10.00, 2));
+
 
 //        binding.fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
